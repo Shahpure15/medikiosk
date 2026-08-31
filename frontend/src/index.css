@@ -1,0 +1,109 @@
+:root {
+  --sih-orange: #FF6600;
+  --sih-green: #138808;
+  --sih-blue: #0A2540;
+  --neo-yellow: #FFE600;
+  --neo-pink: #FF4785;
+  --neo-purple: #8B5CF6;
+  --neo-bg: #F4F0EA;
+  --neo-card-bg: #FFFFFF;
+  --neo-border: #000000;
+  --border-width: 3.5px;
+  --shadow-dist: 5px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--neo-bg);
+  color: #000000;
+  background-image: radial-gradient(#000000 1px, transparent 1px);
+  background-size: 24px 24px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Neo-Brutalism Design Utilities */
+.neo-card {
+  background: #FFFFFF;
+  border: var(--border-width) solid #000000;
+  box-shadow: var(--shadow-dist) var(--shadow-dist) 0px #000000;
+  border-radius: 12px;
+  transition: all 0.15s ease;
+}
+
+.neo-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 24px;
+  border: var(--border-width) solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.btn-orange {
+  background-color: var(--sih-orange);
+  color: #FFFFFF;
+}
+
+.btn-green {
+  background-color: var(--sih-green);
+  color: #FFFFFF;
+}
+
+.btn-yellow {
+  background-color: var(--neo-yellow);
+  color: #000000;
+}
+
+.btn-blue {
+  background-color: var(--sih-blue);
+  color: #FFFFFF;
+}
+
+.badge-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.pulse-animation {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
