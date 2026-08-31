@@ -1,0 +1,56 @@
+{
+  "general_opd": {
+    "name": "General Medicine OPD (SOCRATES Intake)",
+    "department": "General Medicine",
+    "questions": [
+      {
+        "id": "q_chief_complaint",
+        "prompt_en": "What is your main health problem today?",
+        "prompt_hi": "आज आपकी मुख्य स्वास्थ्य समस्या क्या है?",
+        "type": "voice_or_touch",
+        "options": ["Fever (बुखार)", "Cough / Cold (खांसी / जुकाम)", "Abdominal Pain (पेट दर्द)", "Joint / Muscle Pain (जोड़ों में दर्द)", "Chest Pain / Breathlessness (सीने में दर्द / सांस फूलना)"]
+      },
+      {
+        "id": "q_socrates_onset",
+        "prompt_en": "When did this problem start?",
+        "prompt_hi": "यह समस्या कब शुरू हुई थी?",
+        "type": "touch_choice",
+        "options": ["Today (आज)", "2-3 Days ago (2-3 दिन पहले)", "1 Week ago (1 हफ्ता पहले)", "More than a month (1 महीने से अधिक)"]
+      },
+      {
+        "id": "q_socrates_severity",
+        "prompt_en": "On a scale of 1 to 10, how severe is your pain/discomfort?",
+        "prompt_hi": "1 से 10 के पैमाने पर, आपकी तकलीफ कितनी तेज है?",
+        "type": "touch_choice",
+        "options": ["1-3 (Mild / हल्की)", "4-6 (Moderate / मध्यम)", "7-9 (Severe / तेज)", "10 (Unbearable / असहनीय)"]
+      }
+    ]
+  },
+  "ayush_opd": {
+    "name": "Ayurveda OPD (Dashavidha Pariksha Intake)",
+    "department": "AYUSH / Ayurveda",
+    "questions": [
+      {
+        "id": "q_prakriti_assessment",
+        "prompt_en": "What is your dominant body constitution (Prakriti)?",
+        "prompt_hi": "आपकी शारीरिक प्रकृति (Prakriti) कैसी है?",
+        "type": "touch_choice",
+        "options": ["Vata (वात - वायु प्रधान)", "Pitta (पित्त - अग्नि प्रधान)", "Kapha (कफ - जल/पृथ्वी प्रधान)", "Don't know / First Visit (पता नहीं / पहली बार)"]
+      },
+      {
+        "id": "q_ahara_vihara",
+        "prompt_en": "Describe your daily diet & digestive fire (Agni):",
+        "prompt_hi": "आपकी पाचन अग्नि (Agni) और आहार-विहार की स्थिति कैसी है?",
+        "type": "voice_or_touch",
+        "options": ["Tikshnagni (तीक्ष्णाग्नि - तेज भूख)", "Mandagni (मंदाग्नि - सुस्त पाचन)", "Vishamagni (विषमाग्नि - अनियमित भूख)", "Samagni (समाग्नि - सामान्य)"]
+      },
+      {
+        "id": "q_satva_bala",
+        "prompt_en": "How is your sleep quality and stress levels?",
+        "prompt_hi": "आपकी नींद और मानसिक स्थिति कैसी रहती है?",
+        "type": "touch_choice",
+        "options": ["Good sleep (अच्छी नींद)", "Insomnia / Disturbed (कम नींद)", "High Stress / Anxiety (तनाव / घबराहट)"]
+      }
+    ]
+  }
+}
