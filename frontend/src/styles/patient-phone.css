@@ -1,0 +1,116 @@
+/* Patient Mobile PWA Styles per PRD Section 4 & 5 */
+.phone-pwa-container {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(0,0,0,0.08);
+}
+
+.phone-pwa-header {
+  background-color: var(--gov-primary);
+  color: #FFFFFF;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.phone-content {
+  padding: 20px 16px;
+  flex: 1;
+}
+
+/* Waiting Room Call Card */
+.waiting-room-hero {
+  background: linear-gradient(135deg, #0B3D91 0%, #155799 100%);
+  color: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: 28px 20px;
+  text-align: center;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.waiting-token-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  color: var(--gov-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 16px auto;
+  font-weight: 800;
+}
+
+.waiting-token-circle .token-num {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.waiting-token-circle .token-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--gov-text-muted);
+}
+
+/* Call Alert Banner when called_at */
+.call-alert-box {
+  background-color: #FEF3C7;
+  border: 2px solid var(--gov-accent);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: call-pulse 1.8s infinite;
+}
+
+.call-alert-box.active-call {
+  background-color: #DCFCE7;
+  border-color: var(--status-green);
+}
+
+@keyframes call-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+/* Presence Verification Gate Card */
+.presence-gate-card {
+  background-color: #FFF7ED;
+  border: 2px solid #F97316;
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.presence-gate-card h3 {
+  color: #9A3412;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* Prescription Card in History */
+.rx-history-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.rx-med-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--gov-border);
+}

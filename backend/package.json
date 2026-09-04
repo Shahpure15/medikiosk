@@ -1,0 +1,24 @@
+{
+  "name": "medikiosk-backend",
+  "version": "1.0.0",
+  "description": "AYUSH / General OPD Case-Taking Platform Backend (PS 047)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "migrate": "node src/db/migrate.js",
+    "seed": "node src/db/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.12.0",
+    "qrcode": "^1.5.4",
+    "uuid": "^10.0.0",
+    "ws": "^8.18.0"
+  }
+}

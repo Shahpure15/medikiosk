@@ -1,9 +1,0 @@
-{
-  "short_name": "MediKiosk",
-  "name": "MediKiosk — Smart AYUSH & OPD Patient Intake System",
-  "icons": [],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#FF6600",
-  "background_color": "#F4F0EA"
-}

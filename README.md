@@ -1,60 +1,35 @@
-# MediKiosk — Smart AYUSH & General OPD Patient Case-Taking System
-**Problem Statement 047 | Smart India Hackathon 2026**  
-**Team**: f society
+# MediKiosk — AYUSH / General OPD Case-Taking Platform
+**Smart India Hackathon 2026 (PS 047)**
 
-MediKiosk is a digital patient history-taking and decision-support kiosk software designed for AYUSH and General OPDs. It automates patient history intake (Voice + Touch dual-mode with Hindi-English code-switching), extracts clinical entities from uploaded prescriptions & lab reports via OCR, flags clinical red-flags for immediate triage, and renders a 30-second physician summary card with per-section edit/confirm controls.
+A multi-tenant, bilingual/multilingual OPD case-taking platform tailored for Indian public health ecosystems, hospital kiosks, and mobile workflows.
 
----
+## Key Features & Architecture
+- **Sole Datastore**: PostgreSQL with `pg_trgm` extension for typo-tolerant medicine search.
+- **Dynamic RBAC**: Zero hardcoded roles. Every action verified dynamically against `permissions` mapping (`Role x Module x Action`).
+- **Two-Tier Patient Identity**: Stable `patients` record + per-visit temporary `patient_sessions`. Authentication via phone OTP only.
+- **Rule-Engine Intake & Deterministic Routing**: Traverses `question_flows.tree` node-by-node. Triage tags auto-routed via `department_routing_rules` SQL lookup.
+- **Asymmetric Trust Kiosk Presence Gate**: Prevents remote queue abuse; remote sessions require scanning a single-use kiosk verification QR before token issuance.
+- **Clinical Doctor Dashboard & Native WebSockets**: Real-time `case_ready` queue push, two-step consultation lifecycle (`called` vs `in_consult` for accurate no-show management), Indian prescription shorthand (1-0-1, SOS), and OCR inspection.
+- **4 Dedicated Frontend Bundles/Views**:
+  1. `patient-kiosk`: Government-portal theme, large touch targets, touch/voice Q&A, QR presence generator.
+  2. `patient-phone`: Mobile PWA, phone OTP, QR scanner, waiting screen with real-time `your_turn` turn notifications, and past prescription history.
+  3. `doctor-dashboard`: High-density clinical EHR/EMR register, queue management, consult card, and prescription builder.
+  4. `admin`: Hospital Admin (departments, staff, dynamic RBAC view, daily room assignments, registration approval) and Super Admin (`/superadmin` multi-tenant hospital onboarding).
 
-## 📁 Repository Architecture
-
+## Directory Layout
 ```
-medikiosk/
-├── index.html               # Central Landing Page for PPT submission & pitch resources
-├── frontend/                # React + Vite PWA (Kiosk & Doctor Dashboard UI)
-│   ├── package.json
-│   ├── vite.config.js
-│   └── src/
-│       ├── components/      # Kiosk Intake, Voice/Touch, OCR Upload, Doctor Dashboard
-│       ├── services/        # API client for FastAPI backend
-│       └── data/            # Local question trees & mock datasets
-└── backend/                 # Python + FastAPI Backend
-    ├── main.py              # Application entry point & CORS
-    ├── models.py            # PostgreSQL SQLAlchemy models (ABHA, RBAC, Sessions)
-    ├── schemas.py           # Pydantic request/response schemas
-    ├── routers/             # API Endpoints (Intake, OCR, Summary, RBAC, ABDM)
-    ├── services/            # STT (Whisper), OCR (Vision API), Tree Engine
-    └── seed_demo_data.py    # Demo data generator script
+├── backend/          # Node.js + Express + Native WebSockets + PostgreSQL
+│   ├── src/
+│   │   ├── config/   # Env, DB & AI configuration
+│   │   ├── db/       # Schema, Migrations, Seeds
+│   │   ├── middleware/ # JWT Auth, Dynamic RBAC, Hospital Scoping
+│   │   ├── services/ # Business Logic & State Machines
+│   │   ├── controllers/
+│   │   └── routes/
+└── frontend/         # Vite + React PWA (4 dedicated bundle views)
+    ├── src/
+    │   ├── components/ # Kiosk, Phone, Doctor, Admin modular components
+    │   ├── views/      # 4 dedicated views (Kiosk, Phone, Doctor, Admin)
+    │   ├── context/    # Auth & WebSocket Providers
+    │   └── styles/     # Government Theme, Kiosk, Clinical & Admin CSS
 ```
-
----
-
-## ⚡ Quick Start Instructions
-
-### 1. Backend Setup (FastAPI)
-```bash
-cd backend
-python -m venv .venv
-# On Windows:
-.venv\Scripts\activate
-# On Linux/Mac:
-source .venv/bin/activate
-
-pip install -r requirements.txt
-python seed_demo_data.py     # Populate demo records
-uvicorn main:app --reload --port 8000
-```
-Swagger API Docs available at: `http://localhost:8000/docs`
-
-### 2. Frontend Setup (React + Vite)
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Kiosk Portal available at: `http://localhost:5173`
-
----
-
-## 🛡️ Clinical Safety Rule
-Per PS 047 guidelines, MediKiosk strictly operates as **decision support**. Autonomous AI diagnosis is explicitly out of scope. AI structures data, parses OCR, and alerts on red flags — the physician retains 100% diagnostic authority.

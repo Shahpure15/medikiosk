@@ -1,0 +1,183 @@
+/* Kiosk Specific Styling per PRD Section 4 & 5 */
+.kiosk-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+}
+
+.kiosk-idle-hero {
+  text-align: center;
+  padding: 48px 24px;
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gov-border);
+}
+
+.kiosk-badge-lang {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.lang-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--gov-primary-border);
+  background-color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-btn.active {
+  background-color: var(--gov-primary);
+  color: #FFFFFF;
+  border-color: var(--gov-primary);
+}
+
+.kiosk-action-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.kiosk-card-btn {
+  background-color: #FFFFFF;
+  border: 2px solid var(--gov-border);
+  border-radius: var(--radius-xl);
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.kiosk-card-btn:hover {
+  border-color: var(--gov-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.kiosk-card-btn.primary {
+  background-color: var(--gov-primary);
+  color: #FFFFFF;
+  border-color: var(--gov-primary);
+}
+.kiosk-card-btn.primary:hover {
+  background-color: var(--gov-primary-hover);
+}
+
+/* Question Flow & Progress */
+.kiosk-intake-header {
+  margin-bottom: 24px;
+}
+
+.kiosk-progress-bar-wrap {
+  background-color: #E2E8F0;
+  border-radius: 20px;
+  height: 10px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.kiosk-progress-fill {
+  background-color: var(--gov-accent);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.kiosk-question-box {
+  background-color: #FFFFFF;
+  border: 1px solid var(--gov-border);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+}
+
+.kiosk-question-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--gov-text-main);
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.kiosk-question-sub {
+  font-size: 16px;
+  color: var(--gov-text-muted);
+  margin-bottom: 28px;
+}
+
+.kiosk-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kiosk-opt-btn {
+  background-color: #FFFFFF;
+  border: 2px solid var(--gov-border-strong);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--gov-text-main);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kiosk-opt-btn:hover {
+  background-color: var(--gov-primary-light);
+  border-color: var(--gov-primary);
+  color: var(--gov-primary);
+}
+
+.kiosk-voice-control {
+  margin-top: 32px;
+  padding: 24px;
+  background-color: #F8FAFC;
+  border: 2px dashed var(--gov-border-strong);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.voice-mic-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--gov-accent);
+  color: #FFFFFF;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s;
+  box-shadow: var(--shadow-md);
+}
+
+.voice-mic-btn.recording {
+  background-color: var(--status-red);
+  animation: pulse-mic 1.2s infinite;
+}
+
+@keyframes pulse-mic {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+  70% { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(220, 38, 38, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
